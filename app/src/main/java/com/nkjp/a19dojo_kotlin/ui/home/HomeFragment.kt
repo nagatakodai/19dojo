@@ -9,6 +9,8 @@ import android.util.AndroidRuntimeException
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -17,12 +19,11 @@ import com.google.zxing.BarcodeFormat
 import com.google.zxing.WriterException
 import com.journeyapps.barcodescanner.BarcodeEncoder
 import com.nkjp.a19dojo_kotlin.R
+import com.nkjp.a19dojo_kotlin.ui.qr.QrFragment
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_qr.*
 
 class HomeFragment : Fragment() {
-
-    private lateinit var homeViewModel: HomeViewModel
-
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -36,7 +37,6 @@ class HomeFragment : Fragment() {
         val name = sharedPref.getString(getString(R.string.name_key), "")
         val github = sharedPref.getString(getString(R.string.github_key), "")
         val twitter = sharedPref.getString(getString(R.string.twitter_key), "")
-
         edit_name.setText(name)
         edit_github.setText(github)
         edit_twitter.setText(twitter)
@@ -59,13 +59,6 @@ class HomeFragment : Fragment() {
             putString(activity.getString(R.string.name_key),name)
             putString(activity.getString(R.string.github_key),github)
             putString(activity.getString(R.string.twitter_key),twitter)
-        }
-        val qrData = "ca-tech://dojo/share?iam=$name&tw=$twitter&gh=$github"
-        try {
-            val barcodeEncoder = BarcodeEncoder()
-            val bitmap = barcodeEncoder.encodeBitmap(qrData, BarcodeFormat.QR_CODE, 500, 500)
-        }catch (e: WriterException){
-            throw AndroidRuntimeException("Barcode Error.",e)
         }
     }
 }
