@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">19dojo_kotlin</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">ホーム</string>
+    <string name="title_qr">QRコード読み取り</string>
+    <string name="title_list">リスト</string>
     <string name="button_name_save">save</string>
     <string name="name_input_hint">名前</string>
     <string name="github_input_hint">GitHub</string>
