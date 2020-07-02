@@ -18,6 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/name_input_hint" />
@@ -35,6 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/name_input">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_github"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/github_input_hint" />
@@ -52,13 +54,14 @@
         app:layout_constraintTop_toBottomOf="@+id/github_input">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_twitter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/twitter_input_hint" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

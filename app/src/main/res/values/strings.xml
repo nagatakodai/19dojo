@@ -7,4 +7,8 @@
     <string name="name_input_hint">名前</string>
     <string name="github_input_hint">GitHub</string>
     <string name="twitter_input_hint">Twitter</string>
+
+    <string name="name_key">NAME</string>
+    <string name="github_key">GITHUB</string>
+    <string name="twitter_key">TWITTER</string>
 </resources>
