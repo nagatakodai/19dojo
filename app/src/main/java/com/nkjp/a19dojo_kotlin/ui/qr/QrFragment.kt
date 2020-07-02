@@ -19,13 +19,6 @@ class QrFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        qrViewModel =
-                ViewModelProviders.of(this).get(QrViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_qr, container, false)
-
-        qrViewModel.text.observe(viewLifecycleOwner, Observer {
-
-        })
-        return root
+        return inflater.inflate(R.layout.fragment_list, container, false)
     }
 }

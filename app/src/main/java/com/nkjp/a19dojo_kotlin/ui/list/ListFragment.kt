@@ -19,13 +19,7 @@ class ListFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        listViewModel =
-                ViewModelProviders.of(this).get(ListViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_list, container, false)
 
-        listViewModel.text.observe(viewLifecycleOwner, Observer {
-
-        })
-        return root
+        return inflater.inflate(R.layout.fragment_list, container, false)
     }
 }
