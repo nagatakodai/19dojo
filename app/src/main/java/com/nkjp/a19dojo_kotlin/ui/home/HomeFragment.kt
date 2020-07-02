@@ -46,7 +46,7 @@ class HomeFragment : Fragment() {
             )
         }
     }
-    //ViewModel
+    //ViewModel用
     private fun onSave(activity :Activity,edit_name :Editable?,edit_github :Editable?,edit_twitter :Editable?){
         val name = edit_name.toString()
         val github = edit_github.toString()
