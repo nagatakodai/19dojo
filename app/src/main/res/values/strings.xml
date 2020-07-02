@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">19dojo_kotlin</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="button_name_save">save</string>
+    <string name="name_input_hint">名前</string>
+    <string name="github_input_hint">GitHub</string>
+    <string name="twitter_input_hint">Twitter</string>
+</resources>
