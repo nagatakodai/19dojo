@@ -11,12 +11,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.room.Room
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.WriterException
 import com.google.zxing.integration.android.IntentIntegrator
 import com.journeyapps.barcodescanner.BarcodeEncoder
 import com.nkjp.a19dojo_kotlin.R
 import kotlinx.android.synthetic.main.fragment_qr.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlin.concurrent.thread
 
 
 class QrFragment : Fragment() {
@@ -69,7 +73,11 @@ class QrFragment : Fragment() {
             )
             Log.d("test","${user.name}${user.github}${user.twitter}")
             //TODO DBに保存
-
+            //val db = Room.databaseBuilder(requireContext(),AppDatabase::class.java,"user").build()
+            Thread {
+                val userDao = AppDatabase.getUserDatabase(requireContext()).userDao()
+                userDao.insertUser(user)
+            }
         } else {
             super.onActivityResult(requestCode, resultCode, data)
         }
