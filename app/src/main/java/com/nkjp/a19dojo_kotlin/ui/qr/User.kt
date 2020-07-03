@@ -7,8 +7,8 @@ import androidx.room.Entity
 data class User(
     @ColumnInfo(name = "name")
     val name: String,
-    @ColumnInfo(name = "github")
-    val github: String,
     @ColumnInfo(name = "twitter")
-    val twitter: String
+    val twitter: String,
+    @ColumnInfo(name = "github")
+val github: String
 )

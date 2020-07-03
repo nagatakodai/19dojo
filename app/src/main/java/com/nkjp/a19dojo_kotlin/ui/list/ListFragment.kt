@@ -33,12 +33,13 @@ class ListFragment : Fragment() {
         Thread(Runnable {
             val db = AppDatabase.getUserDatabase(requireContext())
             val users = db.userDao().getAllUsers()
-            val adp = UserAdapter(users)
+            Log.d("TEST",users.toString())
+            val adp = UserAdapter(users,requireContext())
             handler.post(Runnable {
                 recycleView.layoutManager = LinearLayoutManager(context)
-                recycleView.setHasFixedSize(true)
+                recycleView.setHasFixedSize(false)
                 recycleView.adapter = adp
-                Log.d("TEST",users.toString())
+
             })
         }).start()
     }

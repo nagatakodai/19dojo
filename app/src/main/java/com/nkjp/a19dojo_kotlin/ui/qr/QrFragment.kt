@@ -76,7 +76,7 @@ class QrFragment : Fragment() {
             val userDao = AppDatabase.getUserDatabase(requireContext()).userDao()
             Thread {
                 userDao.insertUser(user)
-            }
+            }.start()
         } else {
             super.onActivityResult(requestCode, resultCode, data)
         }

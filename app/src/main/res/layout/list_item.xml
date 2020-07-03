@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -16,8 +17,8 @@
             android:layout_height="match_parent"
             android:contentDescription="@string/twitter_key"
             android:scaleType="centerInside"
-            android:src="@mipmap/ic_launcher"
-            app:srcCompat="@drawable/twitter_icon" />
+            app:srcCompat="@drawable/twitter"
+/>
 
         <ImageView
             android:id="@+id/imageViewGh"
@@ -25,7 +26,8 @@
             android:layout_height="match_parent"
             android:contentDescription="@string/github_key"
             android:scaleType="centerInside"
-            app:srcCompat="@drawable/github_logo" />
+            app:srcCompat="@drawable/github"
+ />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -39,13 +41,13 @@
                 android:layout_weight="0.5" />
 
             <TextView
-                android:id="@+id/twitter"
+                android:id="@+id/github"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="0.5" />
 
             <TextView
-                android:id="@+id/github"
+                android:id="@+id/twitter"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="0.5" />
