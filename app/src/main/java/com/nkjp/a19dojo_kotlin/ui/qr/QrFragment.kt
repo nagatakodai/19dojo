@@ -73,9 +73,8 @@ class QrFragment : Fragment() {
             )
             Log.d("test","${user.name}${user.github}${user.twitter}")
             //TODO DBに保存
-            //val db = Room.databaseBuilder(requireContext(),AppDatabase::class.java,"user").build()
+            val userDao = AppDatabase.getUserDatabase(requireContext()).userDao()
             Thread {
-                val userDao = AppDatabase.getUserDatabase(requireContext()).userDao()
                 userDao.insertUser(user)
             }
         } else {
