@@ -28,14 +28,15 @@ class UserAdapter(private val users: List<User> , private val context: Context) 
         holder.imageViewTw.setOnClickListener {
             val twitterUri = "https://twitter.com/${users[position].twitter}".toUri()
             val intent = Intent(context,WebViewActivity::class.java)
+            Log.d("TEST2",twitterUri.toString())
             intent.putExtra("FLAG",twitterUri.toString())
-            Log.d("uri",twitterUri.toString())
             context.startActivity(intent)
         }
         holder.imageViewGh.setOnClickListener {
             val githubUri = "https://github.com/${users[position].github}".toUri()
-            var intent = Intent(context,WebViewActivity::class.java)
-            intent.putExtra("FLAG",githubUri)
+            val intent = Intent(context,WebViewActivity::class.java)
+            Log.d("TEST2",githubUri.toString())
+            intent.putExtra("FLAG",githubUri.toString())
             context.startActivity(intent)
         }
 
