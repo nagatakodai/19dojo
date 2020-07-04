@@ -1,9 +1,9 @@
-package com.nkjp.a19dojo_kotlin
+package com.nkjp.a19dojo_kotlin.view.ui.activity
 
 import android.os.Bundle
-import android.util.Log
 import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
+import com.nkjp.a19dojo_kotlin.R
 
 class WebViewActivity : AppCompatActivity() {
 
@@ -12,7 +12,7 @@ class WebViewActivity : AppCompatActivity() {
         setContentView(R.layout.webview)
 
         val uri = intent.getStringExtra("FLAG")
-        val myWebView: WebView = findViewById(R.id.webview)
+        val myWebView: WebView = findViewById(R.id.webView)
         myWebView.loadUrl(uri)
     }
 }

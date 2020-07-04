@@ -1,6 +1,5 @@
-package com.nkjp.a19dojo_kotlin.ui.qr
+package com.nkjp.a19dojo_kotlin.model
 
-import androidx.annotation.WorkerThread
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy

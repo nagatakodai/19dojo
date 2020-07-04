@@ -1,4 +1,4 @@
-package com.nkjp.a19dojo_kotlin.ui.qr
+package com.nkjp.a19dojo_kotlin.model
 
 import android.content.Context
 import androidx.room.Database
@@ -13,8 +13,9 @@ abstract class AppDatabase : RoomDatabase(){
         @Volatile
         private var INSTANCE: AppDatabase? = null
 
-        fun getUserDatabase(context: Context): AppDatabase{
-            val tempInstance = INSTANCE
+        fun getUserDatabase(context: Context): AppDatabase {
+            val tempInstance =
+                INSTANCE
             if(tempInstance != null) return tempInstance
             synchronized(this){
                 val instance = Room.databaseBuilder(

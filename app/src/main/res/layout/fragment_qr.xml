@@ -5,14 +5,14 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.qr.QrFragment" >
+    tools:context=".view.ui.fragment.QrFragment" >
 
     <ImageView
         android:id="@+id/qrImage"
         android:layout_width="260dp"
         android:layout_height="260dp"
         android:layout_marginTop="100dp"
-        android:contentDescription="@string/qrimage"
+        android:contentDescription="@string/qrImage"
         android:src="@mipmap/ic_launcher"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -11,6 +11,6 @@
     <string name="name_key">NAME</string>
     <string name="github_key">GITHUB</string>
     <string name="twitter_key">TWITTER</string>
-    <string name="qrimage">qrImage</string>
+    <string name="qrImage">qrImage</string>
     <string name="qrRead">QRコードを読み取る</string>
 </resources>

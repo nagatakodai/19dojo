@@ -1,21 +1,21 @@
-package com.nkjp.a19dojo_kotlin.ui.qr
+package com.nkjp.a19dojo_kotlin.viewModel
 
 import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.util.Log
 import android.widget.Toast
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.zxing.BarcodeFormat
-import com.google.zxing.integration.android.IntentIntegrator
 import com.google.zxing.integration.android.IntentResult
 import com.journeyapps.barcodescanner.BarcodeEncoder
 import com.nkjp.a19dojo_kotlin.R
+import com.nkjp.a19dojo_kotlin.model.AppDatabase
+import com.nkjp.a19dojo_kotlin.model.User
+import com.nkjp.a19dojo_kotlin.repository.UserRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -51,7 +51,8 @@ class QrViewModel : ViewModel() {
         Log.d("test", "${user.name}${user.github}${user.twitter}")
         //DBに保存
         val userDao = AppDatabase.getUserDatabase(context).userDao()
-        val repository = UserRepository(userDao)
+        val repository =
+            UserRepository(userDao)
         viewModelScope.launch(Dispatchers.IO) {
             repository.insertUser(user)
         }
