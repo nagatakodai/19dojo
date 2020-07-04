@@ -13,6 +13,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.content.edit
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.google.zxing.BarcodeFormat
@@ -24,25 +25,32 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_qr.*
 
 class HomeFragment : Fragment() {
+
+    private val viewModel: HomeViewModel by viewModels()
+
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE) ?: return
-        val name = sharedPref.getString(getString(R.string.name_key), "")
-        val github = sharedPref.getString(getString(R.string.github_key), "")
-        val twitter = sharedPref.getString(getString(R.string.twitter_key), "")
-        edit_name.setText(name)
-        edit_github.setText(github)
-        edit_twitter.setText(twitter)
+        viewModel.getMyData(requireActivity())
+
+        viewModel.name.observe(viewLifecycleOwner, Observer {
+            edit_name.setText(it)
+        })
+        viewModel.github.observe(viewLifecycleOwner, Observer {
+            edit_github.setText(it)
+        })
+        viewModel.twitter.observe(viewLifecycleOwner, Observer{
+            edit_twitter.setText(it)
+        })
 
         saveButton.setOnClickListener {
-            this.onSave(
+            viewModel.onSave(
                 requireActivity(),
                 edit_name.text,
                 edit_github.text,
@@ -50,15 +58,5 @@ class HomeFragment : Fragment() {
             )
         }
     }
-    private fun onSave(activity : Activity, edit_name : Editable?, edit_github : Editable?, edit_twitter : Editable?){
-        val name = edit_name.toString()
-        val github = edit_github.toString()
-        val twitter = edit_twitter.toString()
-        val sharedPref = activity.getPreferences(Context.MODE_PRIVATE)
-        sharedPref.edit {
-            putString(activity.getString(R.string.name_key),name)
-            putString(activity.getString(R.string.github_key),github)
-            putString(activity.getString(R.string.twitter_key),twitter)
-        }
-    }
+
 }
