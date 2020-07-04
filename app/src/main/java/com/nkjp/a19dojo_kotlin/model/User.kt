@@ -1,4 +1,4 @@
-package com.nkjp.a19dojo_kotlin.ui.qr
+package com.nkjp.a19dojo_kotlin.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

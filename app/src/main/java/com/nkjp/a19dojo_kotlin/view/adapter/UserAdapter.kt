@@ -1,4 +1,4 @@
-package com.nkjp.a19dojo_kotlin.ui.list
+package com.nkjp.a19dojo_kotlin.view.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -8,8 +8,9 @@ import android.view.ViewGroup
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.nkjp.a19dojo_kotlin.R
-import com.nkjp.a19dojo_kotlin.WebViewActivity
-import com.nkjp.a19dojo_kotlin.ui.qr.User
+import com.nkjp.a19dojo_kotlin.view.ui.activity.WebViewActivity
+import com.nkjp.a19dojo_kotlin.model.User
+import com.nkjp.a19dojo_kotlin.model.UserViewHolder
 
 class UserAdapter(private val users: List<User>, private val context: Context) :
     RecyclerView.Adapter<UserViewHolder>() {

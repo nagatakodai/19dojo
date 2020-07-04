@@ -1,4 +1,4 @@
-package com.nkjp.a19dojo_kotlin.ui.home
+package com.nkjp.a19dojo_kotlin.viewModel
 
 import android.app.Activity
 import android.content.Context

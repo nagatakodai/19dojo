@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.nkjp.a19dojo_kotlin.ui.home.HomeFragment"
+        android:name="com.nkjp.a19dojo_kotlin.view.ui.fragment.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_qr"
-        android:name="com.nkjp.a19dojo_kotlin.ui.qr.QrFragment"
+        android:name="com.nkjp.a19dojo_kotlin.view.ui.fragment.QrFragment"
         android:label="@string/title_qr"
         tools:layout="@layout/fragment_qr" />
 
     <fragment
         android:id="@+id/navigation_list"
-        android:name="com.nkjp.a19dojo_kotlin.ui.list.ListFragment"
+        android:name="com.nkjp.a19dojo_kotlin.view.ui.fragment.ListFragment"
         android:label="@string/title_list"
         tools:layout="@layout/fragment_list" />
 </navigation>

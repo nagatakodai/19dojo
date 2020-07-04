@@ -1,14 +1,12 @@
-package com.nkjp.a19dojo_kotlin.ui.list
+package com.nkjp.a19dojo_kotlin.viewModel
 
 import android.content.Context
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nkjp.a19dojo_kotlin.ui.qr.AppDatabase
-import com.nkjp.a19dojo_kotlin.ui.qr.User
-import com.nkjp.a19dojo_kotlin.ui.qr.UserRepository
+import com.nkjp.a19dojo_kotlin.model.AppDatabase
+import com.nkjp.a19dojo_kotlin.model.User
+import com.nkjp.a19dojo_kotlin.repository.UserRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

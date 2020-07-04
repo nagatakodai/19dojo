@@ -1,28 +1,15 @@
-package com.nkjp.a19dojo_kotlin.ui.home
+package com.nkjp.a19dojo_kotlin.view.ui.fragment
 
-import android.app.Activity
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.text.Editable
-import android.util.AndroidRuntimeException
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.Toast
-import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import com.google.zxing.BarcodeFormat
-import com.google.zxing.WriterException
-import com.journeyapps.barcodescanner.BarcodeEncoder
 import com.nkjp.a19dojo_kotlin.R
-import com.nkjp.a19dojo_kotlin.ui.qr.QrFragment
+import com.nkjp.a19dojo_kotlin.viewModel.HomeViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_qr.*
 
 class HomeFragment : Fragment() {
 
