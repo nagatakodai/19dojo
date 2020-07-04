@@ -11,6 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.room.Room
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.WriterException
@@ -22,62 +24,39 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlin.concurrent.thread
 
-
 class QrFragment : Fragment() {
 
-    private lateinit var qrViewModel: QrViewModel
+    private val viewModel: QrViewModel by viewModels()
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_qr, container, false)
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE) ?:return
-        val name = sharedPref.getString(getString(R.string.name_key), "")
-        val github = sharedPref.getString(getString(R.string.github_key), "")
-        val twitter = sharedPref.getString(getString(R.string.twitter_key), "")
-        val qrData = "ca-tech://dojo/share?iam=$name&tw=$twitter&gh=$github"
-        //Toast.makeText(activity,"読み込みました",Toast.LENGTH_SHORT).show()
-        try {
-            val barcodeEncoder = BarcodeEncoder()
-            val bitmap = barcodeEncoder.encodeBitmap(qrData, BarcodeFormat.QR_CODE, 500, 500)
-            qrImage.setImageBitmap(bitmap)
-            qrText.text = "あなたのURLは、$qrData です。"
-        }catch (e: WriterException){
-            throw AndroidRuntimeException("Barcode Error.",e)
-        }
+        viewModel.createBitmap(requireActivity())
+        viewModel.bitmap.observe(viewLifecycleOwner, Observer {
+            try {
+                qrImage.setImageBitmap(it)
+            } catch (e: WriterException) {
+                throw AndroidRuntimeException("Barcode Error.", e)
+            }
+        })
         //カメラ起動
-        qrReadButton.setOnClickListener{
+        qrReadButton.setOnClickListener {
             val integrator = IntentIntegrator.forSupportFragment(this)
             integrator.initiateScan()
         }
     }
+
     //QR読み取り
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
         if (result != null) {
-            Log.d("readQR", result.contents)
-            Toast.makeText(context, result.contents,Toast.LENGTH_LONG).show()
-            //TODO URL分割
-            val uri = Uri.parse(result.contents)
-            val name = uri.getQueryParameter("iam").toString()
-            val github = uri.getQueryParameter("gh").toString()
-            val twitter = uri.getQueryParameter("tw").toString()
-            val user = User(
-            name = name,
-            github = github,
-            twitter = twitter
-            )
-            Log.d("test","${user.name}${user.github}${user.twitter}")
-            //TODO DBに保存
-            //val db = Room.databaseBuilder(requireContext(),AppDatabase::class.java,"user").build()
-            Thread {
-                val userDao = AppDatabase.getUserDatabase(requireContext()).userDao()
-                userDao.insertUser(user)
-            }
+            viewModel.saveDatabase(requireContext(), result)
         } else {
             super.onActivityResult(requestCode, resultCode, data)
         }
