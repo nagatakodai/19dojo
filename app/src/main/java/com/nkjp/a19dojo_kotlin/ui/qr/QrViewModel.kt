@@ -16,6 +16,7 @@ import com.google.zxing.integration.android.IntentIntegrator
 import com.google.zxing.integration.android.IntentResult
 import com.journeyapps.barcodescanner.BarcodeEncoder
 import com.nkjp.a19dojo_kotlin.R
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class QrViewModel : ViewModel() {
@@ -50,8 +51,9 @@ class QrViewModel : ViewModel() {
         Log.d("test", "${user.name}${user.github}${user.twitter}")
         //DBに保存
         val userDao = AppDatabase.getUserDatabase(context).userDao()
-        viewModelScope.launch {
-            userDao.insertUser(user)
+        val repository = UserRepository(userDao)
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.insertUser(user)
         }
     }
 }
