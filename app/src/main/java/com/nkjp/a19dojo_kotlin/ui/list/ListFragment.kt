@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nkjp.a19dojo_kotlin.R
 import com.nkjp.a19dojo_kotlin.ui.qr.AppDatabase
@@ -15,7 +17,7 @@ import kotlin.concurrent.thread
 
 class ListFragment : Fragment() {
 
-    private lateinit var listViewModel: ListViewModel
+    private val viewModel: ListViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,19 +30,11 @@ class ListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //TODO リサイクラビュー
-        val handler = Handler()
-        Thread(Runnable {
-            val db = AppDatabase.getUserDatabase(requireContext())
-            val users = db.userDao().getAllUsers()
-            Log.d("TEST",users.toString())
-            val adp = UserAdapter(users,requireContext())
-            handler.post(Runnable {
-                recycleView.layoutManager = LinearLayoutManager(context)
-                recycleView.setHasFixedSize(false)
-                recycleView.adapter = adp
-
-            })
-        }).start()
+        viewModel.createAdapter(requireContext())
+        viewModel.users.observe(viewLifecycleOwner, Observer {
+            recycleView.layoutManager = LinearLayoutManager(context)
+            recycleView.setHasFixedSize(false)
+            recycleView.adapter = UserAdapter(it,requireContext())
+        })
     }
 }
