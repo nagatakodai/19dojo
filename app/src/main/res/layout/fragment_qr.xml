@@ -12,7 +12,7 @@
         android:layout_width="260dp"
         android:layout_height="260dp"
         android:layout_marginTop="100dp"
-        android:contentDescription="@string/qrimage"
+        android:contentDescription="@string/qrImage"
         android:src="@mipmap/ic_launcher"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

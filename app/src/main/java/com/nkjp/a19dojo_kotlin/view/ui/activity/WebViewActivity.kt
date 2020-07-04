@@ -12,7 +12,7 @@ class WebViewActivity : AppCompatActivity() {
         setContentView(R.layout.webview)
 
         val uri = intent.getStringExtra("FLAG")
-        val myWebView: WebView = findViewById(R.id.webview)
+        val myWebView: WebView = findViewById(R.id.webView)
         myWebView.loadUrl(uri)
     }
 }

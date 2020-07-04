@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModel
 import com.nkjp.a19dojo_kotlin.R
 
 class HomeViewModel : ViewModel() {
-    //TODO state
     val name : MutableLiveData<String> by lazy {
         MutableLiveData<String>()
     }
